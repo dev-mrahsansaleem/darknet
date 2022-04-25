@@ -322,7 +322,9 @@ void train_detector(char *datacfg, char *cfgfile, char *weightfile, int *gpus, i
             else fprintf(stderr, "\n Tensor Cores are used.\n");
             fflush(stderr);
         }
-        printf("\n %d: %f, %f avg loss, %f rate, %lf seconds, %d images, %f hours left\n", iteration, loss, avg_loss, get_current_rate(net), (what_time_is_it_now() - time), iteration*imgs, avg_time);
+        printf("\n %d: %f, %f avg loss, %f rate, %lf seconds, %d images, %f hours left, %f accuracy\n",
+         iteration, loss, avg_loss, get_current_rate(net), (what_time_is_it_now() - time), iteration*imgs, avg_time,network_accuracy(net,train));
+
         fflush(stdout);
 
         int draw_precision = 0;
